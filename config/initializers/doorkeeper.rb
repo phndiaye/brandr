@@ -4,9 +4,13 @@ Doorkeeper.configure do
   # :mongoid4, :mongo_mapper
   orm :active_record
 
-  # This block will be called to check whether the resource owner is authenticated or not.
+  resource_owner_authenticator do
+    current_user || warden.authenticate!(scope: :user)
+  end
+
   resource_owner_from_credentials do |routes|
     User.find_by(email: params[:username]).try(:authenticate, params[:password])
+    user if user
   end
 
   # If you want to restrict access to the web interface for adding oauth authorized applications, you need to declare the block below.
