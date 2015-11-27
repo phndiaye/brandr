@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      match 'users/me' => 'users#me', via: :get
       resources :users
+        match 'users/me' => 'users#me', via: :get
+      resources :hunts
     end
   end
 end

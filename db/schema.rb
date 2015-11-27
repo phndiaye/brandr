@@ -11,7 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151123224911) do
+ActiveRecord::Schema.define(version: 20151127170037) do
+
+  create_table "hunt_comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "hunt_item_id"
+    t.text     "text"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "hunt_items", force: :cascade do |t|
+    t.integer  "top"
+    t.integer  "left"
+    t.integer  "hunt_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hunts", force: :cascade do |t|
+    t.string   "image_url",  null: false
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
