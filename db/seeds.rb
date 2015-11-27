@@ -9,7 +9,7 @@ iamphinson = User.where(email: 'phndiaye@gmail.com').first_or_create(
   firstname: 'Philippe', lastname: 'Ndiaye', username: 'iamphinson',
   email: 'phndiaye@gmail.com', password: 'philippe123',
   password_confirmation: 'philippe123')
-jeannecarr = User.first_or_create(
+jeannecarr = User.where(email: 'jeanne.carr86@example.com').first_or_create(
   firstname: 'Jeanne', lastname: 'Carr', username: 'jcarr',
   email: 'jeanne.carr86@example.com', password: 'password123',
   password_confirmation: 'password123')
