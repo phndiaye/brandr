@@ -3,6 +3,6 @@ class HuntItem < ActiveRecord::Base
   has_many :hunt_comments
 
   def comments_count
-    hunt_comments.count
+    hunt_comments.count || 0
   end
 end
