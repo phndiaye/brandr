@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151127170037) do
+ActiveRecord::Schema.define(version: 20151215231759) do
 
   create_table "hunt_comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -30,10 +30,11 @@ ActiveRecord::Schema.define(version: 20151127170037) do
   end
 
   create_table "hunts", force: :cascade do |t|
-    t.string   "image_url",  null: false
+    t.string   "image_url"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "image"
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
