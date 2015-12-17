@@ -5,6 +5,7 @@ class Hunt < ActiveRecord::Base
   has_many :hunt_items
 
   validates :image, presence: true
+  validates :hunt_items, length: { minimum: 1 }
 
   def hunts_count
     hunt_items.count
