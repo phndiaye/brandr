@@ -7,6 +7,8 @@ class Hunt < ActiveRecord::Base
   validates :image, presence: true
   validates :hunt_items, length: { minimum: 1 }
 
+  default_scope -> { order(created_at: :desc) }
+
   def hunts_count
     hunt_items.count
   end
