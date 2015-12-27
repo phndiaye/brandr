@@ -16,6 +16,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'responders', '~> 2.0'
 gem 'active_model_serializers'
 
+gem 'kaminari'
 gem 'carrierwave'
 
 group :development, :test do

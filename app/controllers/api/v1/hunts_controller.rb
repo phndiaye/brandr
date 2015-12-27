@@ -1,7 +1,10 @@
 class Api::V1::HuntsController < Api::V1::BaseController
+  DEFAULT_PAGE = 1
+  DEFAULT_PER_PAGE = 20
+
   def index
-    hunts = Hunt.all
-    respond_with hunts
+    hunts = Hunt.page(page).per(per_page)
+    respond_with hunts, meta: { pages: hunts.total_pages, total: hunts.count }
   end
 
   def show
@@ -43,6 +46,14 @@ class Api::V1::HuntsController < Api::V1::BaseController
         hunt.errors << hunt_item.errors
       end
     end
+  end
+
+  def page
+    params[:page] || DEFAULT_PAGE
+  end
+
+  def per_page
+    params[:per_page] || DEFAULT_PER_PAGE
   end
 
   def hunt_params
