@@ -4,7 +4,7 @@ class Api::V1::HuntsController < Api::V1::BaseController
 
   def index
     hunts = Hunt.page(page).per(per_page)
-    respond_with hunts, meta: { pages: hunts.total_pages, total: hunts.count }
+    respond_with hunts, meta: { pages: hunts.total_pages, total: Hunt.count }
   end
 
   def show
