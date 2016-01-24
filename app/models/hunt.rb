@@ -2,7 +2,7 @@ class Hunt < ActiveRecord::Base
   mount_uploader :image, HuntImageUploader
 
   belongs_to :user
-  has_many :hunt_items
+  has_many :hunt_items, autosave: true
 
   validates :image, presence: true
   validates :hunt_items, length: { minimum: 1 }

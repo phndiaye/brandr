@@ -1,4 +1,6 @@
 class Api::V1::HuntsController < Api::V1::BaseController
+  before_action :doorkeeper_authorize!, only: [:index, :create]
+
   DEFAULT_PAGE = 1
   DEFAULT_PER_PAGE = 20
 
@@ -16,13 +18,13 @@ class Api::V1::HuntsController < Api::V1::BaseController
     hunt = Hunt.new(hunt_params.except(:image, :image_url, :hunt_items))
     hunt.user = current_user
     set_image(hunt)
-    set_hunt_items(hunt)
-    hunt.save!
+    hunt.hunt_items.build(hunt_params.fetch(:hunt_items))
+    hunt.save
 
     if hunt.valid?
-      render json: hunt
+      render json: hunt, status: :created
     else
-      render json: { errors: hunt.errors }, status: :unprocessable_entity
+      render json: { errors: hunt.errors.details }, status: :unprocessable_entity
     end
   end
 
@@ -33,18 +35,6 @@ class Api::V1::HuntsController < Api::V1::BaseController
       hunt.image = ConvertToUpload.perform(hunt_params[:image])
     elsif hunt_params.fetch(:image_url, hunt.image_url) != hunt.image_url
       hunt.remote_image_url = hunt_params[:image_url]
-    end
-  end
-
-  def set_hunt_items(hunt)
-    hunt_params.fetch(:hunt_items).each do |item|
-      hunt_item = HuntItem.new(item)
-      hunt_item.hunt = hunt
-      if hunt_item.save!
-        hunt.hunt_items << hunt_item
-      else
-        hunt.errors << hunt_item.errors
-      end
     end
   end
 
