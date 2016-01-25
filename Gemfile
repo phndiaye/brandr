@@ -24,9 +24,13 @@ group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+
   gem 'rspec'
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl'
   gem 'faker'
-end
 
+  gem 'capistrano', '~> 3.1'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rvm'
+end
