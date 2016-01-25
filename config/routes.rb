@@ -8,4 +8,6 @@ Rails.application.routes.draw do
       resources :hunts
     end
   end
+
+  get 'healthcheck', to: 'health_check#index'
 end
