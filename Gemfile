@@ -20,6 +20,8 @@ gem 'active_model-errors_details'
 gem 'kaminari'
 gem 'carrierwave'
 
+gem 'puma'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -33,4 +35,5 @@ group :development, :test do
   gem 'capistrano', '~> 3.1'
   gem 'capistrano-rails', '~> 1.1'
   gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
 end
