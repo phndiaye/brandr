@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   end
 
   get 'healthcheck', to: 'health_check#index'
+
+  root to: 'home#index'
 end
