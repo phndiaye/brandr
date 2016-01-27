@@ -10,6 +10,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+gem 'dotenv-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem 'doorkeeper'
 gem 'rack-cors', require: 'rack/cors'
@@ -21,6 +22,7 @@ gem 'kaminari'
 gem 'carrierwave'
 
 gem 'puma'
+gem 'redis'
 
 group :development, :test do
   gem 'byebug'
