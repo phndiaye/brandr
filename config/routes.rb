@@ -11,5 +11,9 @@ Rails.application.routes.draw do
 
   get 'healthcheck', to: 'health_check#index'
 
+  unless Rails.env.development?
+    match '*path', to: 'home#index', via: [:get]
+  end
+
   root to: 'home#index'
 end
