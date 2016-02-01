@@ -19,12 +19,12 @@ jeannecarr = User.where(email: 'jeanne.carr86@example.com').first_or_create(
   File.open("#{Rails.root}/db/seed-images/#{img}.jpg") do |f|
     hunt.image = f
   end
+  hunt.hunt_items << HuntItem.create(hunt: hunt, top: 50, left: 38)
+  hunt.hunt_items << HuntItem.create(hunt: hunt, top: 10, left: 50)
+  hunt.hunt_items << HuntItem.create(hunt: hunt, top: 75, left: 90)
   hunt.save!
 end
 
-hunt_item_1 = HuntItem.create(hunt: Hunt.first, top: 50, left: 38)
-hunt_item_2 = HuntItem.create(hunt: Hunt.first, top: 10, left: 50)
-HuntItem.create(hunt: Hunt.first, top: 75, left: 90)
 
-HuntComment.create(user: jeannecarr, hunt_item: hunt_item_1, text: 'Entitled "Juke Or Treat,\" the track was shared by The Social')
-HuntComment.create(user: jeannecarr, hunt_item: hunt_item_2, text: 'Entitled "Juke Or Treat," the track was shared by The Socia')
+HuntComment.create(user: jeannecarr, hunt_item: HuntItem.first, text: 'Entitled "Juke Or Treat,\" the track was shared by The Social')
+HuntComment.create(user: jeannecarr, hunt_item: HuntItem.last, text: 'Entitled "Juke Or Treat," the track was shared by The Socia')
