@@ -11,7 +11,7 @@ describe Api::V1::HuntsController do
     let!(:token) { nil }
 
     it 'should return an unauthorized access error' do
-      get :index, format: :json
+      post :create, format: :json, hunt: {}
       expect(JSON.parse(response.body)['error']).to eq 'Unauthorized Access'
     end
   end

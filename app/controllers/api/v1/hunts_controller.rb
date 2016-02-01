@@ -1,5 +1,5 @@
 class Api::V1::HuntsController < Api::V1::BaseController
-  before_action :doorkeeper_authorize!, only: [:index, :create]
+  before_action :doorkeeper_authorize!, only: [:create]
 
   DEFAULT_PAGE = 1
   DEFAULT_PER_PAGE = 20
