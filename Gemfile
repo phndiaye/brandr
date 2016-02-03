@@ -21,8 +21,12 @@ gem 'active_model-errors_details'
 gem 'kaminari'
 gem 'carrierwave'
 
-gem 'puma'
 gem 'redis'
+
+group :production do
+  gem 'puma'
+  gem 'pg'
+end
 
 group :development, :test do
   gem 'byebug'
