@@ -18,7 +18,11 @@ class Api::V1::HuntsController < Api::V1::BaseController
     hunt = Hunt.new(hunt_params.except(:image, :image_url, :hunt_items))
     hunt.user = current_user
     set_image(hunt)
-    hunt.hunt_items.build(hunt_params.fetch(:hunt_items))
+
+    unless hunt_params.fetch(:hunt_items, []).empty?
+      hunt.hunt_items.build(hunt_params.fetch(:hunt_items))
+    end
+
     hunt.save
 
     if hunt.valid?
